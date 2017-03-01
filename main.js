@@ -1,36 +1,64 @@
-wvar viewer = new Cesium.Viewer('cesiumContainer', {
-    infoBox : false,
-    selectionIndicator : false,
-    shadows : true
-});
+var EPS = 0.1;
 
-function createModel(url, height) {
-    viewer.entities.removeAll();
+module.exports = {
+  schema: {
+    enabled: {default: true},
+    mode: {default: 'teleport', oneOf: ['teleport', 'animate']},
+    animateSpeed: {default: 3.0}
+  },
 
-    var position = Cesium.Cartesian3.fromDegrees(-123.0744619, 44.0503706, height);
-    var heading = Cesium.Math.toRadians(135);
-    var pitch = 0;
-    var roll = 0;
-    var hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
-    var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
+  init: function () {
+    this.active = true;
+    this.checkpoint = null;
 
-    var entity = viewer.entities.add({
-        name : url,
-        position : position,
-        orientation : orientation,
-        model : {
-            uri : url,
-            minimumPixelSize : 128,
-            maximumScale : 20000
-        }
-    });
-    viewer.trackedEntity = entity;
-}
+    this.offset = new THREE.Vector3();
+    this.position = new THREE.Vector3();
+    this.targetPosition = new THREE.Vector3();
+  },
 
+  play: function () { this.active = true; },
+  pause: function () { this.active = false; },
 
-{
-    text : 'Skinned character',
-    onselect : function() {
-        createModel('../../SampleData/models/CesiumMan/Cesium_Man.glb', 0);
+  setCheckpoint: function (checkpoint) {
+    if (!this.active) return;
+
+    this.checkpoint = checkpoint;
+    if (this.data.mode === 'teleport') {
+      this.sync();
+      this.el.setAttribute('position', this.targetPosition);
     }
-}];
+  },
+
+  isVelocityActive: function () {
+    return !!(this.active && this.checkpoint);
+  },
+
+  getVelocity: function () {
+    if (!this.active) return;
+
+    var data = this.data,
+        offset = this.offset,
+        position = this.position,
+        targetPosition = this.targetPosition;
+
+    this.sync();
+    if (position.distanceTo(targetPosition) < EPS) {
+      this.checkpoint = null;
+      return offset.set(0, 0, 0);
+    }
+    offset.setLength(data.animateSpeed);
+    return offset;
+  },
+
+  sync: function () {
+    var offset = this.offset,
+        position = this.position,
+        targetPosition = this.targetPosition;
+
+    position.copy(this.el.getAttribute('position'));
+    targetPosition.copy(this.checkpoint.object3D.getWorldPosition());
+    // TODO - Cleverer ways around this?
+    targetPosition.y = position.y;
+    offset.copy(targetPosition).sub(position);
+  }
+};
