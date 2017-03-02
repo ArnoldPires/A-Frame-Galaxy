@@ -1,10 +1,10 @@
-var EPS = 0.1;
+var EPS = 10.1;
 
 module.exports = {
   schema: {
     enabled: {default: true},
-    mode: {default: 'teleport', oneOf: ['teleport', 'animate']},
-    animateSpeed: {default: 3.0}
+    mode: {default: 'teleport', oneOf: ['teleport', '']},
+    animateSpeed: {default: 100%}
   },
 
   init: function () {
