@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Arnolds Galaxy</title>
     <meta name="description" content="Hello, World! - A-Frame">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.1/dist/aframe-extras.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script>
     <script src="https://sandbox.donmccurdy.com/vr/aframe-extras.js"></script>
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.0/dist/aframe-extras.min.js"></script>
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
   </head>
   <body>
 
@@ -114,19 +114,16 @@
       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
       <a-entity light="color: ffaaff; intensity: 1.5" position="5 5 5"></a-entity>
 
-      <a-entity camera
-          universal-controls="movementControls: checkpoint"
-          camera look-controls
-          checkpoint-controls="mode: animate"
-          animateSpeed="100"
-
-          position="0 7 -5.2">
-      <a-entity cursor="maxDistance: 50"
-          position="0 0 -1"
-          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
-          material="color: #CCC; shader: flat;">
+      <a-entity universal-controls="movementControls: checkpoint"
+                checkpoint-controls="mode: animate">
+        <a-entity camera="userHeight: 5">
+          <a-entity cursor="maxDistance: 30"
+                    position="0 0 -1"
+                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                    material="color: #CCC; shader: flat;">
+          </a-entity>
+        </a-entity>
       </a-entity>
-    </a-entity>
 
           <a-sphere checkpoint="" height="2" position="3 1 100.28" material="color:white" geometry="primitive:sphere;radius:1"></a-sphere>
           <a-sphere checkpoint="" height="2" position="3 2.13 73.8" material="color:white" geometry="primitive:sphere;radius:1"></a-sphere>
