@@ -1,15 +1,17 @@
-var EPS = 10.1;
+const EPS = 0.1;
 
-module.exports = {
+module.exports = AFRAME.registerComponent('checkpoint-controls', {
   schema: {
     enabled: {default: true},
-    mode: {default: 'teleport', oneOf: ['teleport', '']},
-    animateSpeed: {default: 100%}
+    mode: {default: 'teleport', oneOf: ['teleport', 'animate']},
+    animateSpeed: {default: 9.0}
   },
 
   init: function () {
     this.active = true;
     this.checkpoint = null;
+
+    this.isNavMeshConstrained = false;
 
     this.offset = new THREE.Vector3();
     this.position = new THREE.Vector3();
@@ -20,12 +22,30 @@ module.exports = {
   pause: function () { this.active = false; },
 
   setCheckpoint: function (checkpoint) {
+    const el = this.el;
+
     if (!this.active) return;
+    if (this.checkpoint === checkpoint) return;
+
+    if (this.checkpoint) {
+      el.emit('navigation-end', {checkpoint: this.checkpoint});
+    }
 
     this.checkpoint = checkpoint;
+    this.sync();
+
+    // Ignore new checkpoint if we're already there.
+    if (this.position.distanceTo(this.targetPosition) < EPS) {
+      this.checkpoint = null;
+      return;
+    }
+
+    el.emit('navigation-start', {checkpoint: checkpoint});
+
     if (this.data.mode === 'teleport') {
-      this.sync();
       this.el.setAttribute('position', this.targetPosition);
+      this.checkpoint = null;
+      el.emit('navigation-end', {checkpoint: checkpoint});
     }
   },
 
@@ -36,14 +56,16 @@ module.exports = {
   getVelocity: function () {
     if (!this.active) return;
 
-    var data = this.data,
-        offset = this.offset,
-        position = this.position,
-        targetPosition = this.targetPosition;
+    const data = this.data;
+    const offset = this.offset;
+    const position = this.position;
+    const targetPosition = this.targetPosition;
+    const checkpoint = this.checkpoint;
 
     this.sync();
     if (position.distanceTo(targetPosition) < EPS) {
       this.checkpoint = null;
+      this.el.emit('navigation-end', {checkpoint: checkpoint});
       return offset.set(0, 0, 0);
     }
     offset.setLength(data.animateSpeed);
@@ -51,14 +73,13 @@ module.exports = {
   },
 
   sync: function () {
-    var offset = this.offset,
-        position = this.position,
-        targetPosition = this.targetPosition;
+    const offset = this.offset;
+    const position = this.position;
+    const targetPosition = this.targetPosition;
 
     position.copy(this.el.getAttribute('position'));
     targetPosition.copy(this.checkpoint.object3D.getWorldPosition());
-    // TODO - Cleverer ways around this?
-    targetPosition.y = position.y;
+    targetPosition.add(this.checkpoint.components.checkpoint.getOffset());
     offset.copy(targetPosition).sub(position);
   }
-};
+});
