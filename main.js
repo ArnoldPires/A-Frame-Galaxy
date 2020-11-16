@@ -4,7 +4,7 @@ module.exports = AFRAME.registerComponent('checkpoint-controls', {
   schema: {
     enabled: {default: true},
     mode: {default: 'teleport', oneOf: ['teleport', 'animate']},
-    animateSpeed: {default: 9.0}
+    animateSpeed: {default: 100.0}
   },
 
   init: function () {

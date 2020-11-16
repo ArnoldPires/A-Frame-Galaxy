@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
     <title>Arnolds Galaxy</title>
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
   </head>
   <body>
@@ -33,6 +35,12 @@
 
       </a-assets>
 
+      <a-entity id="rig" movement-controls="controls: checkpoint" checkpoint-controls="mode: animate">
+        <a-entity camera="userHeight: 2.6" position="0 4.6 0" look-controls="pointerLockEnabled: true">
+          <a-entity cursor position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;" material="color: #CCC; shader: flat;"></a-entity>
+        </a-entity>
+      </a-entity>
+
       <a-image look-at="[camera]" position="7.12 2.3 10.15" material="color:gray;shader:flat;side:double;transparent:true;src:#cat1" geometry="primitive:plane;height:5;width:5"></a-image>
       <a-image look-at="[camera]" position="8.65 2.3 70.83" material="color:gray;shader:flat;side:double;transparent:true;src:#cat2" geometry="primitive:plane;height:5;width:5"></a-image>
       <a-image look-at="[camera]" position="-1.93 2.3 47.44" material="color:gray;shader:flat;side:double;transparent:true;src:#cat3" geometry="primitive:plane;height:5;width:5"></a-image>
@@ -42,11 +50,11 @@
       <a-image look-at="[camera]" position="49.03 4.34 178.16" material="color:gray;shader:flat;side:double;transparent:true;src:#cow" geometry="primitive:plane;height:10;width:10"></a-image>
       <a-image look-at="[camera]" position="29.24 4.83 188.45" material="color:gray;shader:flat;side:double;transparent:true;src:#doge" geometry="primitive:plane;height:10;width:10"></a-image>
 
-      <a-box id="wall-one" material="src: #texture-wall" depth="1" width="70" height="15" position="-6.52 8 0" rotation="0 90 0" ></a-box>
+      <a-box id="wall-one" material="src: #texture-wall" depth="1" width="70" height="15" position="-6.52 8 0" rotation="0 90 0"></a-box>
       <a-box id="wall-one-3" material="src:#texture-wall" depth="1" width="70" height="15" position="12.79 8 -0.26" rotation="0 90 0" geometry="primitive:box;depth:1;width:70;height:15" scale="1 1 1" visible="true"></a-box>
       <a-box id="one-3" material="src:#texture-wall"position="12.73 8 68.05" rotation="0 90 0" geometry="primitive:box;depth:1;width:70;height:15" scale="1 1 1" visible="true"></a-box>
-      <a-box id="one-5" material="src:#texture-wall"  position="12.63 8 137.47" rotation="0 90 0" geometry="primitive:box;depth:1;width:70;height:15" scale="1 1 1" visible="true"></a-box>
-      <a-box id="one-4" material="src:#texture-wall"  position="-6.52 8 138.62" rotation="0 90 0" geometry="primitive:box;depth:1;width:70;height:15" scale="1 1 1" visible="true"></a-box>
+      <a-box id="one-5" material="src:#texture-wall" position="12.63 8 137.47" rotation="0 90 0" geometry="primitive:box;depth:1;width:70;height:15" scale="1 1 1" visible="true"></a-box>
+      <a-box id="one-4" material="src:#texture-wall" position="-6.52 8 138.62" rotation="0 90 0" geometry="primitive:box;depth:1;width:70;height:15" scale="1 1 1" visible="true"></a-box>
       <a-box id="wall-one-2" material="src:#texture-wall" position="-6.52 8 70.08" rotation="0 90 0" geometry="primitive:box;depth:1;width:70;height:15" scale="1 1 1" visible="true"></a-box>
       <a-box id="one-2" material="src:#texture-wall" position="3.03 8 -35.43" rotation="0 180 0" geometry="primitive:box;depth:1;width:20;height:15" scale="1 1 1" visible="true"></a-box>
       <a-box id="one-6" material="src:#texture-wall" position="-6.52 8 183.55" rotation="0 90 0" geometry="primitive:box;depth:1;width:20;height:15" scale="1 1 1" visible="true"></a-box>
@@ -56,12 +64,8 @@
       <a-box id="one-10" material="src:#texture-wall" position="82.39 8 182.17" rotation="0 90 0" geometry="primitive:box;depth:1;width:23;height:15" scale="1 1 1" visible="true"></a-box>
       <a-box id="hireme" material="src:#hireme" position="82.39 8 182.17" rotation="0 90 0" geometry="primitive:box;depth:1;width:23;height:15" scale="1 1 1" visible="true"></a-box>
 
-      <a-sphere id="1sphere" src="images/sun3.jpg" width="500" color="gray" rotation="45 90 300"  position="0 2000 0" radius="900">
-        <a-animation attribute="rotation"
-        dur="10000"
-        fill="forwards"
-        to="0 360 0"
-        repeat="indefinite"></a-animation>
+      <a-sphere id="1sphere" src="images/sun3.jpg" width="500" color="gray" rotation="45 90 300" position="0 2000 0" radius="900">
+        <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation>
       </a-sphere>
       <a-sphere id="2sphere" color="gray" position="2.98 22.21 179.14" radius="10" material="src:url(images/planet2.jpg);color:gray" geometry="primitive:sphere;radius:10">
         <a-animation attribute="rotation" dur="10200" fill="forwards" to="0 100 200" repeat="indefinite"></a-animation>
@@ -77,11 +81,7 @@
         <a-animation attribute="rotation" dur="15000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
       </a-sphere>
       <a-sphere id="6sphere" src="images/planet6.jpg" rotation="45 90 300" color="gray" position="40 150 -160" radius="10">
-        <a-animation attribute="rotation"
-        dur="15000"
-        fill="forwards"
-        to="0 36 2000"
-        repeat="indefinite"></a-animation>
+        <a-animation attribute="rotation" dur="15000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
       </a-sphere>
     </a-sphere>
     <a-sphere id="7sphere" color="gray" position="3.26 27.79 60" radius="10" material="src:url(images/planet7.jpg);color:gray" geometry="primitive:sphere;radius:10">
@@ -96,42 +96,28 @@
     <a-sphere id="10sphere" color="gray" position="-520.34 800 500" radius="200" material="src:url(images/planet10.jpg);color:gray" geometry="primitive:sphere;radius:200">
       <a-animation attribute="rotation" dur="90000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
     </a-sphere>
-    <a-sphere id="11sphere" color="gray" position="628.67 404.56 -430.08" radius="400" material="src:url(https://ucarecdn.com/78368b31-3a3e-49d0-9b1d-35eea30e5813/);color:gray" geometry="primitive:sphere;radius:400">
+    <a-sphere id="11sphere" color="gray" position="628.67 404.56 -430.08" radius="100" material="src:url(images/planet11.jpg);color:gray" geometry="primitive:sphere;radius:100">
       <a-animation attribute="rotation" dur="90000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
     </a-sphere>
     <a-entity scale="2 2 2" geometry="primitive:torusKnot" position="3.46 6 -10" material="color:magenta;metalness:1;roughness:0.1;sphericalEnvMap:#sky" rotation="0 0 60.59934000007343">
         <a-animation easing="linear" attribute="rotation" dur="10000" to="0 0 360" repeat="indefinite"></a-animation>
       </a-entity>
 
-      <a-entity position="0 0 0"
-        geometry="primitive: plane; width: 200; height: 400;" rotation="-90 0 0"
-        material="src: #grid; repeat: 10 40; ;metalness:0.6; sphericalEnvMap: #sky;"></a-entity>
+      <a-entity position="0 0 0" geometry="primitive: plane; width: 200; height: 400;" rotation="-90 0 0" material="src: #grid; repeat: 10 40; ;metalness:0.6; sphericalEnvMap: #sky;"></a-entity>
 
       <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
       <a-entity light="color: ffaaff; intensity: 1.5" position="5 5 5"></a-entity>
 
-      <a-entity universal-controls="movementControls: checkpoint"
-                checkpoint-controls="mode: animate"
-                look-controls ="acceleration: 100">
-        <a-entity camera="userHeight: 5">
-          <a-entity cursor="maxDistance: 30"
-                    position="0 0 -1"
-                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
-                    material="color: #CCC; shader: flat;">
-          </a-entity>
-        </a-entity>
-      </a-entity>
-
-          <a-sphere checkpoint="" height="2" position="3 1 100.28" material="color:white" geometry="primitive:sphere;radius:1"></a-sphere>
-          <a-sphere checkpoint="" height="2" position="3 2.13 73.8" material="color:white" geometry="primitive:sphere;radius:1"></a-sphere>
-          <a-sphere checkpoint="" height="2" position="3 0.88 50.06" material="color:white" geometry="primitive:sphere;radius:1"></a-sphere>
-          <a-sphere checkpoint="" height="5" position="3 0.55 22.98" material="color:white" geometry="primitive:sphere;radius:1"></a-sphere>
-          <a-sphere checkpoint="" height="5" position="0 1 -5.2" material="color:white" geometry="primitive:sphere;radius:1"></a-sphere>
-          <a-sphere checkpoint="" height="2" position="3 1 120.84" material="color:white" geometry="primitive:sphere;radius:1" scale="1 1 1" visible="true"></a-sphere>
-          <a-sphere checkpoint="" height="2" position="3 1 155.26" material="color:white" geometry="primitive:sphere;radius:1" scale="1 1 1" visible="true"></a-sphere>
-          <a-sphere checkpoint="" height="2" position="3 1 182.47" material="color:white" geometry="primitive:sphere;radius:1" scale="1 1 1" visible="true"></a-sphere>
-          <a-sphere checkpoint="" height="2" position="49.76 1 182.47" material="color:white" geometry="primitive:sphere;radius:1" scale="1 1 1" visible="true"></a-sphere>
-          <a-sphere checkpoint="" height="2" position="68.91 1 182.47" material="color:white" geometry="primitive:sphere;radius:1" scale="1 1 1" visible="true"></a-sphere>
+          <a-cylinder checkpoint="" height="0.1" position="3 1 100.28" material="color:white"></a-cylinder>
+          <a-cylinder checkpoint="" height="0.1" position="3 2.13 73.8" material="color:white"></a-cylinder>
+          <a-cylinder checkpoint="" height="0.1" position="3 0.88 50.06" material="color:white"></a-cylinder>
+          <a-cylinder checkpoint="" height="0.1" position="3 0.55 22.98" material="color:white"></a-cylinder>
+          <a-cylinder checkpoint="" height="0.1" position="0 1 -5.2" material="color:white"></a-cylinder>
+          <a-cylinder checkpoint="" height="0.1" position="3 1 120.84" material="color:white"></a-cylinder>
+          <a-cylinder checkpoint="" height="0.1" position="3 1 155.26" material="color:white"></a-cylinder>
+          <a-cylinder checkpoint="" height="0.1" position="3 1 182.47" material="color:white"></a-cylinder>
+          <a-cylinder checkpoint="" height="0.1" position="49.76 1 182.47" material="color:white"></a-cylinder>
+          <a-cylinder checkpoint="" height="0.1" position="68.91 1 182.47" material="color:white"></a-cylinder>
 
       <a-sky src="#sky" rotation="0 -90 0"></a-sky>
     </a-scene>
