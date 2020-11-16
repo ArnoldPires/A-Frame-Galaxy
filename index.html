@@ -5,37 +5,37 @@
     <title>Arnolds Galaxy</title>
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.1/dist/aframe-extras.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
   </head>
   <body>
 
-    <a-scene inspector="url:https://aframe.io/releases/0.7.0/aframe-inspector.min.js">
+    <a-scene>
 
       <a-assets>
-        <img src="https://ucarecdn.com/424d9357-40cb-43eb-abeb-c05c8d2694dc/" id="grid" crossorigin="anonymous">
+        <img src="images/grass.jpg" id="grid" crossorigin="anonymous">
         <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
 
-        <img id="cat" src="https://ucarecdn.com/8c2f2e93-c03f-4316-a500-c7bbe3a3b8c9/" />
-        <img id="cat2" src="https://ucarecdn.com/06b70213-dd95-459d-9d8d-3689255b2978/" />
-        <img id="cat3" src="https://ucarecdn.com/4f24fccb-3907-4bc6-947a-745197c9645b/" />
-        <img id="cat4" src="https://ucarecdn.com/32df5d19-de9b-4be9-b89e-0567a75ae466/" />
-        <img id="cat5" src="https://ucarecdn.com/9b0d67ad-bed5-48d5-8856-659cf27cb5b1/" />
-        <img id="cat6" src="https://ucarecdn.com/0d4c9ba8-a2e7-4b1e-973a-f2702a3113ec/" />
-        <img id="cow" src="https://ucarecdn.com/38723e16-e5b2-4b97-973c-0da4f2d805a2/" />
-        <img id="doge" src="https://ucarecdn.com/baf3daae-7f85-4d15-97b8-247b514fc2ae/" />
+        <img id="cat1" src="images/cat1.png"/>
+        <img id="cat2" src="images/cat2.png"/>
+        <img id="cat3" src="images/cat3.png"/>
+        <img id="cat4" src="images/cat4.png"/>
+        <img id="cat5" src="images/cat5.png"/>
+        <img id="cat6" src="images/cat6.png"/>
+        <img id="cow" src="images/cow.png"/>
+        <img id="doge" src="images/Doge.png"/>
 
-        <img id="texture-wall" src="https://ucarecdn.com/74d33038-73fb-46b7-b884-72538c6577e7/" />
-        <img id="hireme" src="https://ucarecdn.com/252c4a8e-6d90-46e8-b5d1-abb984a3c6bf/" />
+        <img id="texture-wall" src="images/wall.jpg"/>
+        <img id="hireme" src="images/hireme.png"/>
 
         <a-mixin id="checkpoint"></a-mixin>
         <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
 
       </a-assets>
 
-      <a-image look-at="[camera]" position="7.12 2.3 10.15" material="color:gray;shader:flat;side:double;transparent:true;src:#cat3" geometry="primitive:plane;height:5;width:5"></a-image>
+      <a-image look-at="[camera]" position="7.12 2.3 10.15" material="color:gray;shader:flat;side:double;transparent:true;src:#cat1" geometry="primitive:plane;height:5;width:5"></a-image>
       <a-image look-at="[camera]" position="8.65 2.3 70.83" material="color:gray;shader:flat;side:double;transparent:true;src:#cat2" geometry="primitive:plane;height:5;width:5"></a-image>
-      <a-image look-at="[camera]" position="-1.93 2.3 47.44" material="color:gray;shader:flat;side:double;transparent:true;src:#cat" geometry="primitive:plane;height:5;width:5"></a-image>
+      <a-image look-at="[camera]" position="-1.93 2.3 47.44" material="color:gray;shader:flat;side:double;transparent:true;src:#cat3" geometry="primitive:plane;height:5;width:5"></a-image>
       <a-image look-at="[camera]" position="8.52 2.3 27.77" material="color:gray;shader:flat;side:double;transparent:true;src:#cat4" geometry="primitive:plane;height:5;width:5"></a-image>
       <a-image look-at="[camera]" position="-2.89 2.3 119.91" material="color:gray;shader:flat;side:double;transparent:true;src:#cat5" geometry="primitive:plane;height:5;width:5"></a-image>
       <a-image look-at="[camera]" position="9.1 2.3 140.13" material="color:gray;shader:flat;side:double;transparent:true;src:#cat6" geometry="primitive:plane;height:5;width:5"></a-image>
@@ -56,27 +56,27 @@
       <a-box id="one-10" material="src:#texture-wall" position="82.39 8 182.17" rotation="0 90 0" geometry="primitive:box;depth:1;width:23;height:15" scale="1 1 1" visible="true"></a-box>
       <a-box id="hireme" material="src:#hireme" position="82.39 8 182.17" rotation="0 90 0" geometry="primitive:box;depth:1;width:23;height:15" scale="1 1 1" visible="true"></a-box>
 
-      <a-sphere id="1sphere" src="https://ucarecdn.com/6c98fdbb-c649-48bc-bc00-592cdf14cee3/" width="500" color="gray" rotation="45 90 300"  position="0 2000 0" radius="900">
+      <a-sphere id="1sphere" src="images/sun3.jpg" width="500" color="gray" rotation="45 90 300"  position="0 2000 0" radius="900">
         <a-animation attribute="rotation"
         dur="10000"
         fill="forwards"
         to="0 360 0"
         repeat="indefinite"></a-animation>
       </a-sphere>
-      <a-sphere id="2sphere" color="gray" position="2.98 22.21 179.14" radius="10" material="src:url(https://ucarecdn.com/26fe2b27-fd24-4f63-835c-e9770635c174/);color:gray" geometry="primitive:sphere;radius:10">
+      <a-sphere id="2sphere" color="gray" position="2.98 22.21 179.14" radius="10" material="src:url(images/planet2.jpg);color:gray" geometry="primitive:sphere;radius:10">
         <a-animation attribute="rotation" dur="10200" fill="forwards" to="0 100 200" repeat="indefinite"></a-animation>
       </a-sphere>
       </a-sphere>
-      <a-sphere id="3sphere" color="gray" position="3.32 27.53 13.2" radius="5" material="src:url(https://ucarecdn.com/2ed65d2e-40dd-4928-be61-e889f0e55895/);color:gray" geometry="primitive:sphere;radius:5">
+      <a-sphere id="3sphere" color="gray" position="3.32 27.53 13.2" radius="5" material="src:url(images/planet3.jpg);color:gray" geometry="primitive:sphere;radius:5">
         <a-animation attribute="rotation" dur="10900" fill="forwards" to="0 60 200" repeat="indefinite"></a-animation>
       </a-sphere>
-      <a-sphere id="4sphere" color="gray" position="-38.68 48.46 107.11" radius="5" material="src:url(https://ucarecdn.com/7567a443-6ac1-4ccc-a542-949377a7132e/);color:gray" geometry="primitive:sphere;radius:5">
+      <a-sphere id="4sphere" color="gray" position="-38.68 48.46 107.11" radius="5" material="src:url(images/planet4.jpg);color:gray" geometry="primitive:sphere;radius:5">
         <a-animation attribute="rotation" dur="15000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
       </a-sphere>
-      <a-sphere id="5sphere" color="gray" position="-0.67 40.07 135.59" radius="10" material="src:url(https://ucarecdn.com/006a2314-2da4-40d0-bd3e-2fbe44bc7152/);color:gray" geometry="primitive:sphere;radius:10">
+      <a-sphere id="5sphere" color="gray" position="-0.67 40.07 135.59" radius="10" material="src:url(images/planet5.jpg);color:gray" geometry="primitive:sphere;radius:10">
         <a-animation attribute="rotation" dur="15000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
       </a-sphere>
-      <a-sphere id="6sphere" src="https://ucarecdn.com/793f9cf4-290e-422c-bf88-43db839ea35e/" rotation="45 90 300" color="gray" position="40 150 -160" radius="10">
+      <a-sphere id="6sphere" src="images/planet6.jpg" rotation="45 90 300" color="gray" position="40 150 -160" radius="10">
         <a-animation attribute="rotation"
         dur="15000"
         fill="forwards"
@@ -84,16 +84,16 @@
         repeat="indefinite"></a-animation>
       </a-sphere>
     </a-sphere>
-    <a-sphere id="7sphere" color="gray" position="3.26 27.79 60" radius="10" material="src:url(https://ucarecdn.com/219cc63c-b425-48ab-9caa-24bebb57621b/);color:gray" geometry="primitive:sphere;radius:10">
+    <a-sphere id="7sphere" color="gray" position="3.26 27.79 60" radius="10" material="src:url(images/planet7.jpg);color:gray" geometry="primitive:sphere;radius:10">
       <a-animation attribute="rotation" dur="15000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
     </a-sphere>
-    <a-sphere id="8sphere" color="gray" position="77.92 126.62 274.78" radius="100" material="src:url(https://ucarecdn.com/94d08f45-b95e-4237-9bd3-056020127406/);color:gray" geometry="primitive:sphere;radius:100">
+    <a-sphere id="8sphere" color="gray" position="77.92 126.62 274.78" radius="100" material="src:url(images/planet8.jpg);color:gray" geometry="primitive:sphere;radius:100">
       <a-animation attribute="rotation" dur="29000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
     </a-sphere>
-    <a-sphere id="9sphere" color="gray" position="1269.34 747.08 263.88" radius="400" material="src:url(https://ucarecdn.com/65b9efa4-218c-4d60-acd1-b6bfdfe47949/);color:gray" geometry="primitive:sphere;radius:400">
+    <a-sphere id="9sphere" color="gray" position="1269.34 747.08 263.88" radius="400" material="src:url(images/planet9.jpg);color:gray" geometry="primitive:sphere;radius:400">
         <a-animation attribute="rotation" dur="90000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
       </a-sphere>
-    <a-sphere id="10sphere" color="gray" position="-520.34 800 500" radius="200" material="src:url(https://ucarecdn.com/e4623b87-c9c3-4a4e-af7d-98b119bdca8f/);color:gray" geometry="primitive:sphere;radius:200">
+    <a-sphere id="10sphere" color="gray" position="-520.34 800 500" radius="200" material="src:url(images/planet10.jpg);color:gray" geometry="primitive:sphere;radius:200">
       <a-animation attribute="rotation" dur="90000" fill="forwards" to="0 36 2000" repeat="indefinite"></a-animation>
     </a-sphere>
     <a-sphere id="11sphere" color="gray" position="628.67 404.56 -430.08" radius="400" material="src:url(https://ucarecdn.com/78368b31-3a3e-49d0-9b1d-35eea30e5813/);color:gray" geometry="primitive:sphere;radius:400">
